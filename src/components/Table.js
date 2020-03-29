@@ -1,7 +1,8 @@
 import React from 'react'
 
-function Table() {
+function Table(props) {
     return (
+        // const items = this.props.items
         <table class="table" className='table'>
             <thead>
                 <tr>
@@ -12,12 +13,6 @@ function Table() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-
-                </tr>
-                <tr>
-
-                </tr>
                 <tr>
 
                 </tr>

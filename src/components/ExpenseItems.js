@@ -1,9 +1,14 @@
 import React from 'react'
 
 
+function handleInputEvent(e) {
+    this.setState({ type: e.target.value })
+}
+
+
 function ExpenseItems() {
     return (
-        <div class="container" className='expense-items'>
+        <form class="container" className='expense-items'>
             <div class="row">
                 <div className="dropdown" class="col">
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,7 +48,7 @@ function ExpenseItems() {
                 </div>
 
             </div>
-        </div >
+        </form >
     )
 }
 
