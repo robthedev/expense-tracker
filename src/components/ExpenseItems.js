@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 
 function handleInputEvent(e) {
@@ -6,7 +6,17 @@ function handleInputEvent(e) {
 }
 
 
-class ExpenseItems extends React.Component {
+class ExpenseItems extends Component {
+
+    constructor() {
+        super()
+        this.handleInput = this.handleInput.bind(this)
+    }
+
+    handleInput(e) {
+        console.log(e.target.value)
+    }
+
     render() {
         return (
             <form class="container" className='expense-items'>
@@ -16,20 +26,20 @@ class ExpenseItems extends React.Component {
                             Payment Type
 </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <button className="dropdown-item">Card</button>
-                            <button className="dropdown-item">Cash</button>
-                            <button className="dropdown-item">Crypto</button>
-                            <button className="dropdown-item">Check</button>
-                            <button className="dropdown-item">Other</button>
+                            <button onClick={e => this.handleInput(e, 'value')} className="dropdown-item" value="Card">Card</button>
+                            <button onClick={e => this.handleInput(e, 'value')} className="dropdown-item" value="Cash">Cash</button>
+                            <button onClick={e => this.handleInput(e, 'value')} className="dropdown-item" value="Crypto">Crypto</button>
+                            <button onClick={e => this.handleInput(e, 'value')} className="dropdown-item" value="Check">Check</button>
+                            <button onClick={e => this.handleInput(e, 'value')} className="dropdown-item" value="Other">Other</button>
                         </div>
                     </div>
 
                     <div class="col input-group mb-5">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Name:</span>
+                            <span class="input-group-text">Name:</span>
                         </div>
                         <div>
-                            <textarea className="textarea" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                            <input className="textarea" type="text" class="form-control" />
                         </div>
                     </div>
 
@@ -39,12 +49,12 @@ class ExpenseItems extends React.Component {
                         <input class='mb-3' type='date' name='date' />
                     </div>
 
-                    <div class="col input-group">
+                    <div class="col input-group mb-5">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Amount:</span>
                         </div>
                         <div>
-                            <textarea type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                         </div>
                     </div>
 
