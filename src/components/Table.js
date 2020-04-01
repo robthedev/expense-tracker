@@ -14,7 +14,10 @@ class Table extends React.Component {
                 </thead>
                 <tbody>
                     <tr>
-
+                        <td id="type"></td>
+                        <td id="name"></td>
+                        <td id="date"></td>
+                        <td id="amount"></td>
                     </tr>
                 </tbody>
             </table>

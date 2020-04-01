@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 
-
-function handleInputEvent(e) {
-    this.setState({ type: e.target.value })
-}
-
-
 class ExpenseItems extends Component {
 
     constructor() {
         super()
+        this.state = {
+            type: null,
+            name: null,
+            date: null,
+            amount: null
+        }
         this.handleInput = this.handleInput.bind(this)
     }
 
     handleInput(e) {
-        console.log(e.target.value)
+        this.setState(document.getElementById('type').innerText = e.target.value)
     }
 
     render() {
