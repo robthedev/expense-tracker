@@ -1,9 +1,9 @@
 import React from 'react'
 
 class Table extends React.Component {
-    render() {
+    render(props) {
         return (
-            <table class="table" className='table'>
+            <table className='table'>
                 <thead>
                     <tr>
                         <th scope="col">Type</th>
@@ -14,7 +14,7 @@ class Table extends React.Component {
                 </thead>
                 <tbody>
                     <tr>
-                        <td id="type"></td>
+                        <td id="type">{this.props.type}</td>
                         <td id="name"></td>
                         <td id="date"></td>
                         <td id="amount"></td>

@@ -21,7 +21,7 @@ class AddButton extends React.Component {
         return (
             <div>
                 <button
-                    type="button" class="btn btn-info mt-5 mb-5" onClick={e => this.handleInput(e, 'value')}>
+                    type="button" className="btn btn-info mt-5 mb-5" onClick={e => this.handleInput(e, 'value')}>
                     Add Expense
                 </button>
             </div>
