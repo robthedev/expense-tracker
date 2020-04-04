@@ -1,7 +1,10 @@
 import React from 'react'
 
 class Table extends React.Component {
-    render(props) {
+    constructor(props) {
+        super(props)
+    }
+    render() {
         return (
             <table className='table'>
                 <thead>

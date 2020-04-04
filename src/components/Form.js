@@ -20,14 +20,12 @@ class Form extends Component {
         this.setState({
             name: e.target.value
         })
-        console.log(this.state)
     }
 
     handleAmountChange(e) {
         this.setState({
             amount: e.target.value
         })
-        console.log(this.state)
     }
 
 
@@ -35,17 +33,16 @@ class Form extends Component {
         this.setState({
             date: e.target.value
         })
-        console.log(this.state)
     }
 
     handleTypeChange(e) {
         this.setState({
             type: e.target.value
         })
-        console.log(this.state)
     }
 
     render() {
+        console.log(this.state)
         return (
             <form onSubmit={this.handleSubmit} className="container" className='expense-items'>
                 <div className="row">

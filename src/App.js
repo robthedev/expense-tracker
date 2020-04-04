@@ -6,41 +6,16 @@ import AddButton from './components/AddButton'
 import Table from './components/Table'
 
 class App extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
-      type: '',
-      name: '',
-      date: '',
-      amount: '',
-      items: []
+      type: this.props.type,
+      name: this.props.name,
+      date: this.props.date,
+      amount: this.props.amount
     }
-  }
-
-  handleFormSubmit = (e) => {
-
-    let items = [...this.state.items]
-
-    items.push({
-      type: this.state.type,
-      name: this.state.name,
-      date: this.state.date,
-      amount: this.state.amount
-    })
-
-    this.setState({
-      items,
-      type: '',
-      name: '',
-      date: '',
-      amount: ''
-    })
-  }
-
-  handleInput = (e) => {
-    let input = e.target
-
+    console.log(this.props.type)
   }
 
   render() {
@@ -49,7 +24,7 @@ class App extends React.Component {
         <Header />
         <Form />
         <AddButton />
-        <Table />
+        <Table type={this.state.type} />
       </div>
     );
   }
