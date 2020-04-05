@@ -8,14 +8,10 @@ import Table from './components/Table'
 class App extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
-      type: this.props.type,
-      name: this.props.name,
-      date: this.props.date,
-      amount: this.props.amount
+      expenses: []
     }
-    console.log(this.props.type)
+
   }
 
   render() {
@@ -24,7 +20,7 @@ class App extends React.Component {
         <Header />
         <Form />
         <AddButton />
-        <Table type={this.state.type} />
+        <Table expenses={this.state.expenses} />
       </div>
     );
   }

@@ -44,7 +44,7 @@ class Form extends Component {
     render() {
         console.log(this.state)
         return (
-            <form onSubmit={this.handleSubmit} className="container" className='expense-items'>
+            <form onSubmit={this.handleSubmit} className="container" className='expense-items' type={this.state.type} name={this.state.name} date = {this.state.date} amount={this.state.amount} >
                 <div className="row">
                     <div className="select" className="col">
                         <select value={this.state.type} className="btn btn-secondary dropdown-toggle" onChange={this.handleTypeChange}>
