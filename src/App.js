@@ -1,25 +1,25 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header'
-import Form from './components/Form'
-import AddButton from './components/AddButton'
-import Table from './components/Table'
+import Header from './components/Header';
+import Form from './components/Form';
+import Table from './components/Table';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      expenses: []
-    }
+  state = {
+    expenses: []
+  };
 
-  }
+  addExpense = expense => {
+    this.setState({
+      expenses: [...this.state.expenses, expense]
+    });
+  };
 
   render() {
     return (
       <div className="App">
         <Header />
-        <Form />
-        <AddButton />
+        <Form addExpenses={this.addExpense} />
         <Table expenses={this.state.expenses} />
       </div>
     );

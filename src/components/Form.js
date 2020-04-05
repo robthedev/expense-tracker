@@ -1,90 +1,113 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class Form extends Component {
-
-    constructor() {
-        super()
-        this.state = {
-            type: null,
-            name: null,
-            date: null,
-            amount: null
-        }
-        this.handleNameChange = this.handleNameChange.bind(this)
-        this.handleAmountChange = this.handleAmountChange.bind(this)
-        this.handleDateChange = this.handleDateChange.bind(this)
-        this.handleTypeChange = this.handleTypeChange.bind(this)
+  state = {
+    expense: {
+      type: 'Card',
+      name: '',
+      date: '',
+      amount: ''
     }
+  };
 
-    handleNameChange(e) {
-        this.setState({
-            name: e.target.value
-        })
-    }
+  handleInputChange = e => {
+    const target = e.target;
+    const value = target.value;
+    const field = target.name;
+    this.setState({
+      expense: {
+        ...this.state.expense,
+        [field]: value
+      }
+    });
+  };
 
-    handleAmountChange(e) {
-        this.setState({
-            amount: e.target.value
-        })
-    }
+  handleSubmit = e => {
+    e.preventDefault();
+    const expense = this.state.expense;
+    this.props.addExpenses(expense);
+    this.setState({
+      expense: {
+        type: 'Card',
+        name: '',
+        date: '',
+        amount: ''
+      }
+    });
+  };
 
-
-    handleDateChange(e) {
-        this.setState({
-            date: e.target.value
-        })
-    }
-
-    handleTypeChange(e) {
-        this.setState({
-            type: e.target.value
-        })
-    }
-
-    render() {
-        console.log(this.state)
-        return (
-            <form onSubmit={this.handleSubmit} className="container" className='expense-items' type={this.state.type} name={this.state.name} date = {this.state.date} amount={this.state.amount} >
-                <div className="row">
-                    <div className="select" className="col">
-                        <select value={this.state.type} className="btn btn-secondary dropdown-toggle" onChange={this.handleTypeChange}>
-                            Payment Type
-                            <option value="Card">Card</option>
-                            <option value="Cash">Cash</option>
-                            <option value="Crypto">Crypto</option>
-                            <option value="Check">Check</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-
-                    <div className="col input-group mb-5">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">Name:</span>
-                        </div>
-                        <div>
-                            <input className="textarea" type="text" className="form-control" onChange={this.handleNameChange} />
-                        </div>
-                    </div>
-
-                    <div className="w-100"></div>
-
-                    <div className="col">
-                        <input className='mb-3' type='date' name='date' onChange={this.handleDateChange} />
-                    </div>
-
-                    <div className="col input-group mb-5">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">Amount:</span>
-                        </div>
-                        <div>
-                            <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onChange={this.handleAmountChange} />
-                        </div>
-                    </div>
-
-                </div>
-            </form >
-        )
-    }
+  render() {
+    const { type, name, date, amount } = this.state.expense;
+    return (
+      <form className="container expense-items">
+        <div className="row">
+          <div className="select col">
+            <select
+              defaultValue={type}
+              name="type"
+              className="btn btn-secondary dropdown-toggle"
+              onChange={this.handleInputChange}
+              value={type}
+            >
+              Payment Type
+              <option value="Card">Card</option>
+              <option value="Cash">Cash</option>
+              <option value="Crypto">Crypto</option>
+              <option value="Check">Check</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div className="col input-group mb-5">
+            <div className="input-group-prepend">
+              <span className="input-group-text">Name:</span>
+            </div>
+            <div>
+              <input
+                className="form-control"
+                type="text"
+                name="name"
+                onChange={this.handleInputChange}
+                value={name}
+              />
+            </div>
+          </div>
+          <div className="w-100"></div>
+          <div className="col">
+            <input
+              className="mb-3"
+              type="date"
+              name="date"
+              onChange={this.handleInputChange}
+              value={date}
+            />
+          </div>
+          <div className="col input-group mb-5">
+            <div className="input-group-prepend">
+              <span className="input-group-text">Amount:</span>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="amount"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={this.handleInputChange}
+                value={amount}
+              />
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          className="btn btn-info mt-5 mb-5"
+          onClick={this.handleSubmit}
+        >
+          Add Expense
+        </button>
+      </form>
+    );
+  }
 }
 
-export default Form
+export default Form;
